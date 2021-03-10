@@ -4,7 +4,7 @@ NEW User/signup
 
 <br>
 <br>
-<%= form_for(@user, url:'/signup') do |f| %>
+<%= form_for @user do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %>
     <br>
