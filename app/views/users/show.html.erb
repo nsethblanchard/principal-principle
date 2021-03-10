@@ -1,1 +1,14 @@
-User Show page!
+
+
+
+<h1>Principal Principle Admin Page</h1>
+<h2> School: <%= @user.school %>
+
+<h3>Administrator Name: <%=@user.username%></h3>
+<h3>Administrator Email: <%=@user.email%></h3>
+
+
+<h5>Current Teachers</h5>
+<% @user.teachers.each do |teacher| %>
+    <%= teacher.full_name %>
+<% end %>
