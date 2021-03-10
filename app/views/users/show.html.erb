@@ -10,5 +10,14 @@
 
 <h5>Current Teachers</h5>
 <% @user.teachers.each do |teacher| %>
-    <%= teacher.full_name %>
+    <ol>
+        <li><%= full_name teacher %> - <%= link_to "#{teacher.first_name}'s Show page", teacher_path(teacher)%></li>
+    </ol>
+<% end %>
+
+<h5>Current Students</h5>
+<% @user.students.each do |student| %>
+    <ol>
+        <li><%= full_name student %> - <%= link_to "#{student.first_name}'s Show page", student_path(student)%></li>
+    </ol>
 <% end %>
