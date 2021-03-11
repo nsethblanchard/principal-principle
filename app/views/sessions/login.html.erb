@@ -2,17 +2,18 @@
 
 <h1> Log in to your App </h1>
 
+<%= flash[:message] %>
+
 <%= form_for :user do |f| %>
     <%# the reason we aren't using an instance variable is we are not creating an instance %>
     <%# using :user allows us to use form_for instead of form_tag but not worry about instantiation %>
+    <br>
     <%= f.label :email %>
     <%= f.email_field :email, required:true %>
     <br>
     <br>
     <%= f.label :password %>
     <%= f.password_field :password, required:true %>
-
-
 
     <%= f.submit "Log In" %>
 <% end %>
