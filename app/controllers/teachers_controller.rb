@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
     def index
-
+        @teachers = current_user.teachers.all
     end
     
     def new
@@ -8,9 +8,12 @@ class TeachersController < ApplicationController
     end
 
     def create
-        @teacher = Teacher.new(teacher_params)
-
-        #build out later
+        @teacher = current_user.teachers.build(teacher_params)
+        if @teacher.save
+            redirect_to teacher_path(@teacher)
+        else
+            render :new
+        end 
     end
 
     def show
@@ -26,7 +29,7 @@ class TeachersController < ApplicationController
     end
 
     def destroy
-        
+
     end
 
     private
