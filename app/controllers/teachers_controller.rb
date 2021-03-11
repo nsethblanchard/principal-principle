@@ -1,4 +1,6 @@
 class TeachersController < ApplicationController
+    #you can use a before_action for helper methods like "redirect_if_not_logged_in" up here so you don't have to call within each action
+
     def index
         @teachers = current_user.teachers.all
     end
