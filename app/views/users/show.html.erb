@@ -12,6 +12,7 @@
 <% @user.teachers.each do |teacher| %>
     <ol>
         <li><%= full_name teacher %> - <%= link_to "#{teacher.first_name}'s Show page", teacher_path(teacher)%></li>
+        <%# link_to full_name(teacher), teacher_path %>
     </ol>
 <% end %>
 
