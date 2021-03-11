@@ -1,14 +1,11 @@
 <h1>New Assignment</h1>
 
-<%= form_for @student do |f| %>
+<%= form_for @assignment do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <br>
     <%= f.label :content %>
     <%= f.text_area :content %>
-    <br>
-    <%= f.label :grade_level %>
-    <%= f.text_field :grade_level %>
     <br>
     <%= f.label :due_date %>
     <%= f.date_select :due_date %>
