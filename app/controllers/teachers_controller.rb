@@ -1,4 +1,8 @@
 class TeachersController < ApplicationController
+    def index
+
+    end
+    
     def new
         @teacher = Teacher.new
     end
@@ -7,6 +11,22 @@ class TeachersController < ApplicationController
         @teacher = Teacher.new(teacher_params)
 
         #build out later
+    end
+
+    def show
+
+    end
+
+    def edit
+
+    end
+
+    def update
+
+    end
+
+    def destroy
+        
     end
 
     private
