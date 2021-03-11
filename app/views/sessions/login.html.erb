@@ -2,8 +2,9 @@
 
 <h1> Log in to your App </h1>
 
-<%= form_for @user, url: "/login" do |f| %>
-   
+<%= form_for :user do |f| %>
+    <%# the reason we aren't using an instance variable is we are not creating an instance %>
+    <%# using :user allows us to use form_for instead of form_tag but not worry about instantiation %>
     <%= f.label :email %>
     <%= f.email_field :email, required:true %>
     <br>

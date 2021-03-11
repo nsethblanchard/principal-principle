@@ -17,7 +17,12 @@ class StudentsController < ApplicationController
     end
 
     def show
-        @student = Student.find(params[:id])
+        @student = Student.find_by(id: params[:id])
+        redirect_to '/' if !@user 
+
+
+        # if you use @student = Student.find(params[:id]), you would need a rescue statement
+        # because if it returns nil, there will be an error and the program will break
     end
 
     def edit
