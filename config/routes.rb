@@ -8,10 +8,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :teachers do
-    resources :assignments, only [:new, :create, :index]
+    # resources :assignments, only: [:new, :create, :index]
+    #when restricting the routes, it is called "shallow routing"-meaning only nesting which ones you need
   end
   resources :students do
-    resources :assignments, only [:index]
+    # resources :assignments, only: [:index]
   end
   
   resources :assignments

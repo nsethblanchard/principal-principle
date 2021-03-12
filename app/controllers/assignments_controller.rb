@@ -1,7 +1,7 @@
 class AssignmentsController < ApplicationController
 
     def index
-
+        @assignments = Assignment.all
     end
 
     def new
@@ -9,16 +9,19 @@ class AssignmentsController < ApplicationController
     end
 
     def create
-        @assignment = Assignment.create(assignment_params)
-        if @assignment.save
+        @assignment = Assignment.new(assignment_params)
+        if @assignment.valid?
+            
+            @assignment.save
             redirect_to assignment_path(@assignment)
         else
-            raise params
+            render :new
         end
     end
 
     def show
-        @assigment = Assignment.find(params[:id])
+        @assignment = Assignment.find(params[:id])
+        
     end
 
     def edit

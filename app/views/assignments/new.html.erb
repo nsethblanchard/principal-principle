@@ -8,9 +8,17 @@
     <%= f.text_area :content %>
     <br>
     <%= f.label :due_date %>
-    <%= f.date_select :due_date %>
+    <%= f.date_field :due_date %>
     <br>
-        
+    <%= f.label :teacher_id, "Assigning Teacher" %>
+    <%= f.collection_select :teacher_id, Teacher.where(user_id: current_user.id), :id, :last_name, prompt: true %>
+    <br>
+    <br>
+    <%= f.label :teacher_id, "Students who will be assigned" %>
+    <%= f.collection_check_boxes :student_id, Student.where(user_id: current_user.id), :id, :last_name, prompt: true %>
+    <br>
+    <br>
+    <%# f.collection_select :teacher_id, Teacher.all, :id, :first_name %>   
     <%# you can add the hidden field for setting up user_id but that leaves %>
     <%# a vulnerability to someone changing the hidden field, better in the controller sometimes %>
     <%= f.submit "Create a new Assignment" %>
