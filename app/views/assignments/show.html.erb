@@ -2,4 +2,16 @@
 
 <h1> Assignment Show Page </h1>
 
-  <p>  <%= @assignment.title %> </p>
+<h4> Assignment Title: <%= @assignment.title %> </h4>
+<h4> Assignment content: <%= @assignment.content %> </h4>
+
+<h4> Assigning Teacher: <%= link_to full_name(@assignment.teacher), teacher_path(@assignment.teacher.id) %> </h4>
+<h4> Assigned Student: <%= link_to full_name(@assignment.student), student_path(@assignment.student.id) %> </h4>
+<h4> Due Date: <%= @assignment.due_date %> </h4>
+
+
+
+<%= link_to "#{@assignment.teacher.user.school} Profile Page", user_path(@assignment.teacher.user_id) %>
+<br>
+<%= link_to "Edit This Assignment", edit_assignment_path(@assignment) %>
+<br>

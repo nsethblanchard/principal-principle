@@ -25,11 +25,13 @@ class AssignmentsController < ApplicationController
     end
 
     def edit
-
+        @assignment = Assignment.find(params[:id])
     end
 
     def update
-
+        @assignment = Assignment.find(params[:id])
+        @assignment.update(assignment_params)
+        redirect_to assignment_path(@assignment)
     end
 
     def destroy

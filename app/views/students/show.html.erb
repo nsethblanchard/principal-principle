@@ -7,13 +7,20 @@
 <h3>Grade Level: <%= @student.grade_level %></h3>
 <h3>Favorite Movie: <%= @student.fav_movie %></h3>
 
-<h3> List of Teachers who have assignments for <%= full_name(@student)%></h3> 
-<ol>
-    <li>
-        <%# @student.teachers.each do |teacher| %>
-        <%# full_name(teacher) %> 
-    </li>
-</ol>
+<% if @student.assignments == nil %>
+    <h3><%= full_name(@student) %> has completed all assignments!</h3> 
+    
+<% else %>    
+    <h3> List of Teachers who have assignments for <%= full_name(@student)%></h3> 
+    <ol>
+        
+            <% @student.teachers.uniq.each do |teacher| %>
+            <li><%= full_name(teacher) %></li>
+            <% end %>
+            
+        
+    </ol>
+<% end %>
 
 
 

@@ -14,8 +14,8 @@
     <%= f.collection_select :teacher_id, Teacher.where(user_id: current_user.id), :id, :last_name, prompt: true %>
     <br>
     <br>
-    <%= f.label :teacher_id, "Students who will be assigned" %>
-    <%= f.collection_check_boxes :student_id, Student.where(user_id: current_user.id), :id, :last_name, prompt: true %>
+    <%= f.label :student_id, "Student who will be assigned" %>
+    <%= f.collection_select :student_id, Student.where(user_id: current_user.id), :id, :last_name, prompt: true %>
     <br>
     <br>
     <%# f.collection_select :teacher_id, Teacher.all, :id, :first_name %>   
