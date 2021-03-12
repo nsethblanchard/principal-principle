@@ -24,11 +24,14 @@ class TeachersController < ApplicationController
     end
 
     def edit
-
+        @teacher = Teacher.find(params[:id])
     end
 
     def update
-
+        @teacher = Teacher.find(params[:id])
+        @teacher.update(teacher_params)
+        flash[:message] = "You have updated #{full_name(@teacher)}"
+        redirect_to user_path(@teacher.user.id)
     end
 
     def destroy

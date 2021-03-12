@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    include ApplicationHelper #did this to have access to full_name
+
 
     #put methods in here you will use in your controllers primarily and use a lot
     #if you are planning to just use them in views, write them in the appropriate helper file and then "include" them here
