@@ -27,7 +27,8 @@
 <ol>
 <% @user.students.each do |student| %>
         <li><%= full_name student %> - Grade: <%= student.grade_level %> <%= link_to "#{student.first_name}'s Show page", student_path(student)%>
-        <%= link_to "Edit #{student.first_name}", edit_student_path(student)%></li></li>
+        <%= link_to "Edit #{student.first_name}", edit_student_path(student)%>
+        <%= link_to "Delete #{student.first_name}", student, method: :delete, data: { confirm: "Please confirm deletion of #{student.first_name}"} %></li>
     <% end %>
 </ol>
 
