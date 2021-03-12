@@ -11,18 +11,17 @@
     <h3><%= full_name(@student) %> has completed all assignments!</h3> 
     
 <% else %>    
-    <h3> List of Teachers who have assignments for <%= full_name(@student)%></h3> 
+    <h3> List of Teachers and Assignments for <%= full_name(@student)%></h3> 
     <ol>
-        
-            <% @student.teachers.uniq.each do |teacher| %>
-            <li><%= full_name(teacher) %></li>
-            <% end %>
-            
-        
+        <% @student.teachers.each do |teacher| %>
+        <li><%= full_name(teacher) %> -
+                <% teacher.assignments.each do |assignment| %>
+                    <%= link_to assignment.title, assignment_path(assignment) %>
+                <% end %>
+        </li>
+        <% end %>        
     </ol>
 <% end %>
-
-
 
 
 <%= link_to "#{@student.user.school} Profile Page", user_path(@student.user.id) %>
