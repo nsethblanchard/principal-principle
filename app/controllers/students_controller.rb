@@ -10,7 +10,8 @@ class StudentsController < ApplicationController
     def create
         @student = current_user.students.build(student_params)
         if @student.save
-            redirect_to student_path(@student)
+            flash[:message]= "You have a new student!"
+            redirect_to user_path(@student.user.id)
         else
             render :new
         end 
