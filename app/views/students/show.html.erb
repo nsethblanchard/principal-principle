@@ -2,10 +2,20 @@
 <br>
 <br>
 <br>
-<h1><%= full_name(@student)%>'s Show page </h1>
+<h1><%= full_name(@student)%> - <%= @student.user.school %> Student </h1>
 
 <h3>Grade Level: <%= @student.grade_level %></h3>
 <h3>Favorite Movie: <%= @student.fav_movie %></h3>
+
+<h3> List of Teachers who have assignments for <%= full_name(@student)%></h3> 
+<ol>
+    <li>
+        <%# @student.teachers.each do |teacher| %>
+        <%# full_name(teacher) %> 
+    </li>
+</ol>
+
+
 
 
 <%= link_to "#{@student.user.school} Profile Page", user_path(@student.user.id) %>
