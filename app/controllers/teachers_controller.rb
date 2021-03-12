@@ -12,7 +12,8 @@ class TeachersController < ApplicationController
     def create
         @teacher = current_user.teachers.build(teacher_params)
         if @teacher.save
-            redirect_to teacher_path(@teacher)
+            flash[:message]= "You have a new teacher!"
+            redirect_to user_path(@teacher.user.id)
         else
             render :new
         end 

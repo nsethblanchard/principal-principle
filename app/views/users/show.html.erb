@@ -4,21 +4,29 @@
 <h1>Principal Principle Admin Page</h1>
 <h2> School: <%= @user.school %>
 
+
 <h3>Administrator Name: <%=@user.username%></h3>
 <h3>Administrator Email: <%=@user.email%></h3>
 
 
 <h5>Current Teachers</h5>
-<% @user.teachers.each do |teacher| %>
-    <ol>
+<ol>
+<% @user.teachers.each do |teacher| %>   
         <li><%= full_name teacher %> - <%= link_to "#{teacher.first_name}'s Show page", teacher_path(teacher)%></li>
-        <%# link_to full_name(teacher), teacher_path %>
-    </ol>
-<% end %>
+        <%# link_to full_name(teacher), teacher_path %> 
+    <% end %>
+</ol>
+
+<%= link_to "Create a new Teacher", new_teacher_path %>
+
 
 <h5>Current Students</h5>
+<ol>
 <% @user.students.each do |student| %>
-    <ol>
         <li><%= full_name student %> - <%= link_to "#{student.first_name}'s Show page", student_path(student)%></li>
-    </ol>
-<% end %>
+    <% end %>
+</ol>
+
+<%= link_to "Create a new Student", new_student_path %>
+<br>
+<br>
