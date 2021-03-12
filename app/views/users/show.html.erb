@@ -7,10 +7,11 @@
 
 <h3>Administrator Name: <%=@user.username%></h3>
 <h3>Administrator Email: <%=@user.email%></h3>
+<p><%= @user.school %> has <%= @user.teachers.count %> teachers and <%= @user.students.count %> students.</p>
 
 <%= flash[:message] if flash[:message] %>
 
-<h5>Current Teachers</h5>
+<h5>List of Current Teachers</h5>
 <ol>
 <% @user.teachers.each do |teacher| %>   
         <li><%= full_name teacher %> - Currently Teaches <%= teacher.subject %> <%= link_to "#{teacher.first_name}'s Show page", teacher_path(teacher)%>
