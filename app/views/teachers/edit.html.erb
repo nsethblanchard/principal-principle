@@ -12,6 +12,9 @@
     <%= f.label :subject %>
     <%= f.text_field :subject %>
     <br>
+    <%= f.label :hobby %>
+    <%= f.text_area :hobby %>
+    <br>
     <%# you can add the hidden field for setting up user_id but that leaves %>
     <%# a vulnerability to someone changing the hidden field, better in the controller sometimes %>
     <%= f.submit "Update #{full_name(@teacher)}" %>

@@ -11,6 +11,9 @@
     <%= f.label :grade_level %>
     <%= f.text_field :grade_level %>
     <br>
+    <%= f.label :fav_movie %>
+    <%= f.text_field :fav_movie %>
+    <br>
     <%# you can add the hidden field for setting up user_id but that leaves %>
     <%# a vulnerability to someone changing the hidden field, better in the controller sometimes %>
     <%= f.submit "Create a new Student" %>

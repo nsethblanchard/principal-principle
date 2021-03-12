@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_131704) do
+ActiveRecord::Schema.define(version: 2021_03_12_143933) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "title"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_03_10_131704) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "fav_movie"
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_03_10_131704) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "hobby"
     t.index ["user_id"], name: "index_teachers_on_user_id"
   end
 
