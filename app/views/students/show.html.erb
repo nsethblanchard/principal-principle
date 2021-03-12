@@ -8,8 +8,7 @@
 <h3>Favorite Movie: <%= @student.fav_movie %></h3>
 
 <% if @student.assignments == nil %>
-    <h3><%= full_name(@student) %> has completed all assignments!</h3> 
-    
+    <h3><%= full_name(@student) %> has completed all assignments!</h3>     
 <% else %>    
     <h3> List of Teachers and Assignments for <%= full_name(@student)%></h3> 
     <ol>

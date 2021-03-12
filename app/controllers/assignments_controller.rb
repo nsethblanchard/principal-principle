@@ -11,7 +11,6 @@ class AssignmentsController < ApplicationController
     def create
         @assignment = Assignment.new(assignment_params)
         if @assignment.valid?
-            
             @assignment.save
             redirect_to assignment_path(@assignment)
         else
@@ -21,7 +20,6 @@ class AssignmentsController < ApplicationController
 
     def show
         @assignment = Assignment.find(params[:id])
-        
     end
 
     def edit

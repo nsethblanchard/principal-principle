@@ -7,8 +7,24 @@
 <h3>Current Subject: <%= @teacher.subject %></h3>
 <h3>Favorite Pastime: <%= @teacher.hobby %></h3>
 
-<%#Add list of students who have been assigned things%>
-<%#Add list of assignments%>
+<% if @teacher.assignments == nil %>
+    <h3><%= full_name(@teacher) %> currently has no student assignments</h3>     
+<% else %>    
+    <h3> List of Students and Assignments for <%= full_name(@teacher)%></h3> 
+    <ol>
+        <% @teacher.students.each do |student| %>
+        <li><%= full_name(student) %> -
+                <% student.assignments.each do |assignment| %>
+                    <%= link_to assignment.title, assignment_path(assignment) %>
+                <% end %>
+        </li>
+        <% end %>        
+    </ol>
+<% end %>
+
+
+
+
 
 <%= link_to "Add New Assignment", new_assignment_path %>
 
