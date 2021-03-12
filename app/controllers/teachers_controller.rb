@@ -35,7 +35,8 @@ class TeachersController < ApplicationController
     end
 
     def destroy
-
+        @teacher = Teacher.find(params[:id]).destroy
+        redirect_to user_path(@teacher.user.id)
     end
 
     private
