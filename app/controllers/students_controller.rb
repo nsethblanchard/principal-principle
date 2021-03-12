@@ -27,11 +27,14 @@ class StudentsController < ApplicationController
     end
 
     def edit
-
+        @student = Student.find(params[:id])
     end
 
     def update
-
+        @student = Student.find(params[:id])
+        @student.update(student_params)
+        flash[:message] = "You have updated #{full_name(@student)}"
+        redirect_to user_path(@student.user.id)
     end
 
     def destroy
