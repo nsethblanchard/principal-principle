@@ -20,7 +20,8 @@ class TeachersController < ApplicationController
     end
 
     def show
-
+        @teacher = Teacher.find(params[:id])
+        redirect_to '/' if !@teacher.user
     end
 
     def edit
