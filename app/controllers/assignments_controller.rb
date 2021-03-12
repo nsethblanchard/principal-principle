@@ -9,11 +9,16 @@ class AssignmentsController < ApplicationController
     end
 
     def create
-
+        @assignment = Assignment.create(assignment_params)
+        if @assignment.save
+            redirect_to assignment_path(@assignment)
+        else
+            raise params
+        end
     end
 
     def show
-
+        @assigment = Assignment.find(params[:id])
     end
 
     def edit

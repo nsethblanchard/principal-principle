@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   post '/login' => "sessions#create"
   delete '/logout' => "sessions#destroy"
 
-  resources :assignments
-  resources :teachers
-  resources :students
   resources :users
- 
+  resources :teachers do
+    resources :assignments, only [:new, :create, :index]
+  end
+  resources :students do
+    resources :assignments, only [:index]
+  end
+  
+  resources :assignments
 end
