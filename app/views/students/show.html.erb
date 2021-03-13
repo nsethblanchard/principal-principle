@@ -12,11 +12,11 @@
 <% else %>    
     <h3> List of Teachers and Assignments for <%= full_name(@student)%></h3> 
     <ol>
-        <% @student.teachers.each do |teacher| %>
-        <li><%= full_name(teacher) %> -
-                <% teacher.assignments.each do |assignment| %>
-                    <%= link_to assignment.title, assignment_path(assignment) %>
-                <% end %>
+        <% @student.teachers.uniq.each do |teacher| %>
+        <li><%= full_name(teacher) %> - <%= link_to "Show Page", teacher_path(teacher) %></li>
+              <ul>  <% teacher.assignments.each do |assignment| %>
+                   <li> <%= link_to assignment.title, assignment_path(assignment) %></li>
+                <% end %> </ul>
         </li>
         <% end %>        
     </ol>
