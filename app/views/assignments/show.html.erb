@@ -15,3 +15,5 @@
 <br>
 <%= link_to "Edit This Assignment", edit_assignment_path(@assignment) %>
 <br>
+<%= link_to "Delete Assignment", @assignment, method: :delete, data: { confirm: "Please confirm deletion of this assignment"} %>
+<br>

@@ -39,7 +39,7 @@ class StudentsController < ApplicationController
 
     def destroy
         @student = Student.find(params[:id]).destroy
-        redirect_to user_path(@student.user.id)
+        redirect_to user_path(current_user)
     end
 
     private 

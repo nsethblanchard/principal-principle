@@ -29,11 +29,13 @@ class AssignmentsController < ApplicationController
     def update
         @assignment = Assignment.find(params[:id])
         @assignment.update(assignment_params)
+        flash[:message] = "You have updated this Assignment"
         redirect_to assignment_path(@assignment)
     end
 
     def destroy
-
+        @assignment = Assignment.find(params[:id]).destroy
+        redirect_to user_path(current_user)
     end
 
     private
