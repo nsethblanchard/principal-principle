@@ -2,16 +2,17 @@
 <br>
 <br>
 <br>
+
 <h1> Assignment Index Page </h1>
-<%= flash[:message] if flash[:message] %>
 
 <% if @assignments == [] %>
     <h2>No current assignments. </h2>
 <% else %>
-
     <% @assignments.each do |assign| %>
-        <%= assign.title if assign.title %>
-        <%= assign.content if assign.content %>    
+        <h4>Assignment Title: <%= assign.title if assign.title %></h4>
+        <h4>Content of Assignment: <%= assign.content if assign.content %></h4>
+        <h4>Assigning Teacher: <%= full_name(assign.teacher) if assign.teacher %></h4>
+        <h4>Student Assigned: <%= full_name(assign.student) if assign.student %></h4>
     <br>
     <% end %>
 <% end %>
