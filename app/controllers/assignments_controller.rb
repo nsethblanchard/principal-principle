@@ -1,7 +1,14 @@
 class AssignmentsController < ApplicationController
 
     def index
-        @assignments = Assignment.all
+        #in order to check for nesting, check for foreign key
+        if params[:student_id] && @student = Student.find_by_id(params[:id])
+            # then it will be nested
+            @assignments = @student.assignments
+        else
+            flash[:message] = "This assignment doesn't exist, redirected to all Assignments" if params[:student_id]
+            @assignments = Assignment.all
+        end
     end
 
     def new

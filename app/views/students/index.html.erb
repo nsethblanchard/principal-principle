@@ -1,0 +1,9 @@
+
+
+<h1> Student Index </h1>
+
+<% @students.each do |student| %>
+    <h3>Name: <%= full_name(student) %></h3>
+    <h4>Grade: <%= student.grade_level %></h4>
+    <h4>Favorite Movie: <%= student.fav_movie %></h4>
+<% end %>
