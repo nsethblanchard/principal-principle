@@ -2,14 +2,15 @@
 
 <h1> Overdue Assignments </h1>
 
-
-
-<% @assignments.each do |assignment| %>
-    <h4><%= assignment.title %></h4>
-    <h4><%= full_name(assignment.student)%></h4>
-    <h4>Original Due Date: <%= assignment.due_date %>
-    
-    <h4> Assignment is currently <%= TimeDifference.between(Date.today, assignment.due_date).in_days.to_i %> days overdue. </h4>
+<% if @assignments == nil %>
+    <h3> There are currently no overdue assignments. </h3>
+<% else %>
+    <% @assignments.each do |assignment| %>
+        <h4><%= assignment.title %></h4>
+        <h4><%= full_name(assignment.student)%></h4>
+        <h4>Original Due Date: <%= assignment.due_date.strftime("%m/%d/%y") %>
+        <h4> Assignment is currently <%= TimeDifference.between(Date.today, assignment.due_date).in_days.to_i %> days overdue. </h4>
+    <% end %>
 <% end %>
 
 
