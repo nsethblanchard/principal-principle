@@ -1,20 +1,22 @@
 class AssignmentsController < ApplicationController
 
     def index
-        
         #in order to check for nesting, check for foreign key
         if params[:student_id] && @student = Student.find_by_id(params[:student_id]) #add the find_by to return nil if they look for non-existent student
             # then it will be nested
             @assignments = @student.assignments
-            
         else
-            
             @assignments = Assignment.all
         end
     end
 
     def new
-        @assignment = Assignment.new
+        if params[:teacher_id] && @teacher = Teacher.find_by_id(params[:teacher_id])
+            @assignment = @teacher.assignments.build  
+        else
+            #not sure I would need this as functionally, only a teacher can create an assignment
+            @assignment = Assignment.new
+        end
     end
 
     def create
