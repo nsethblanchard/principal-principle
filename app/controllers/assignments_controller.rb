@@ -48,6 +48,14 @@ class AssignmentsController < ApplicationController
         redirect_to user_path(current_user)
     end
 
+    def alpha  #practice and not implemented as a view or link on site
+        @assignments = Assignment.all.alpha
+    end
+
+    def overdue_assignments
+        @assignments = Assignment.overdue_assignments
+    end
+
     private
 
     def assignment_params
