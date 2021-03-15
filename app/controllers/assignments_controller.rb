@@ -1,5 +1,4 @@
 class AssignmentsController < ApplicationController
-
     def index
         #in order to check for nesting, check for foreign key
         if params[:student_id] && @student = Student.find_by_id(params[:student_id]) #add the find_by to return nil if they look for non-existent student

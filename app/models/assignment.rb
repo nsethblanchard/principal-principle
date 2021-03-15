@@ -2,12 +2,12 @@ class Assignment < ApplicationRecord
   belongs_to :teacher
   belongs_to :student
 
+  
+  scope :alpha, -> { order (:content) }
+    #this is the scope method = usually called in the controller
 
-  # def teacher_name=(first_name, last_name)
-  #   self.teacher = Teacher.find_by(first_name: first_name, last_name: last_name)
-  # end
+    # same as def grades
 
-  # def teacher_name
-  #    self.teacher ? self.teacher.name : nil
-  # end
+    # end
+  
 end

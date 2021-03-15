@@ -27,15 +27,16 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
+        binding.pry
         @user = User.from_omniauth(auth)
         @user.save
         session[:user_id] = @user.id
-        redirect_to home_path
+        redirect_to user_path(@user)
     end
       
       private
       
     def auth
        request.env['omniauth.auth']
-     end
+    end
 end
