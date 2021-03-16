@@ -24,8 +24,6 @@
 
 <%= link_to "List of #{full_name(@student)} Assignments", student_assignments_path(@student) %>
 <br>
-<%= link_to "#{@student.user.school} Profile Page", user_path(@student) %>
-<br>
 <%= link_to "Edit #{full_name(@student)}", edit_student_path(@student) %>
 <br>
 <%= link_to "Delete #{full_name(@student)}", @student, method: :delete, data: { confirm: "Please confirm deletion of #{full_name(@student)}"} %>

@@ -8,7 +8,7 @@
 <h3>Administrator Name: <%=@user.username%></h3>
 <h3>Administrator Email: <%=@user.email%></h3>
 <p><%= @user.school %> currently has <%= @user.teachers.count %> teachers and <%= @user.students.count %> students.</p>
-<%= link_to "Students with Overdue Assignments", overdue_assignments_path %>
+
 <%= flash[:message] if flash[:message] %>
 
 
@@ -23,9 +23,6 @@
     <% end %>
 </ol>
 
-<%= link_to "Create a new Teacher", new_teacher_path %>
-
-
 <h5>Current Students</h5>
 <ol>
 <% @user.students.each do |student| %>
@@ -34,7 +31,3 @@
         <%= link_to "Delete #{student.first_name}", student, method: :delete, data: { confirm: "Please confirm deletion of #{student.first_name}"} %></li>
     <% end %>
 </ol>
-
-<%= link_to "Create a new Student", new_student_path %>
-<br>
-<br>
