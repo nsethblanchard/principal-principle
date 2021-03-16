@@ -2,6 +2,8 @@ class Assignment < ApplicationRecord
   belongs_to :teacher
   belongs_to :student
 
+  validates :title, :content, :due_date, presence: true
+
   
   scope :alpha, -> { order (:content) }
 

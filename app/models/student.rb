@@ -4,4 +4,6 @@ class Student < ApplicationRecord
   has_many :teachers, through: :assignments
 
   #add validation for grade to limit 1-12?
+  validates :first_name, :last_name, :fav_movie, presence: true
+  validates :grade_level, presence: true, numericality: true, inclusion: { :in (1..12) }
 end
