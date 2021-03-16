@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   end
   
   resources :assignments
+
+  #scope method routes
   get '/alpha' => 'assignments#alpha'
   get '/overdue_assignments' => 'assignments#overdue_assignments'
 end

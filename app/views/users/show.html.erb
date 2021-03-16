@@ -8,8 +8,10 @@
 <h3>Administrator Name: <%=@user.username%></h3>
 <h3>Administrator Email: <%=@user.email%></h3>
 <p><%= @user.school %> currently has <%= @user.teachers.count %> teachers and <%= @user.students.count %> students.</p>
-
+<%= link_to "Students with Overdue Assignments", overdue_assignments_path %>
 <%= flash[:message] if flash[:message] %>
+
+
 
 <h5>List of Current Teachers</h5>
 <ol>
