@@ -11,23 +11,54 @@
 
 <%= flash[:message] if flash[:message] %>
 
+<h5> Current Teachers</h5>
 
+<table class="table table-striped table-hover">
+  <thead class="table-dark" >
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Subject</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<h5>List of Current Teachers</h5>
-<ol>
-<% @user.teachers.each do |teacher| %>   
-        <li><%= full_name teacher %> - Currently Teaches <%= teacher.subject %> <%= link_to "#{teacher.first_name}'s Show page", teacher_path(teacher)%>
-            <%= link_to "Edit #{teacher.first_name}", edit_teacher_path(teacher)%>
-            <%= link_to "Delete #{teacher.first_name}", teacher, method: :delete, data: { confirm: "Please confirm deletion of #{teacher.first_name}"} %></li>
-        <%# link_to full_name(teacher), teacher_path %> 
+  <tbody>
+    <% @user.teachers.each do |teacher| %>
+      <tr>
+        <td><%= teacher.first_name %></td>
+        <td><%= teacher.last_name %></td>
+        <td><%= teacher.subject %></td>
+        <td><%= link_to "#{teacher.first_name}'s Show Page", teacher_path(teacher), class:"btn btn-dark" %></td>
+        <td><%= link_to 'Edit', edit_teacher_path(teacher), class:"btn btn-dark" %></td>
+        <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: "Please confirm deletion of #{teacher.first_name}" }, class:"btn btn-danger" %></td>
+      </tr>
     <% end %>
-</ol>
+  </tbody>
+</table>
 
 <h5>Current Students</h5>
-<ol>
-<% @user.students.each do |student| %>
-        <li><%= full_name student %> - Grade: <%= student.grade_level %> <%= link_to "#{student.first_name}'s Show page", student_path(student)%>
-        <%= link_to "Edit #{student.first_name}", edit_student_path(student)%>
-        <%= link_to "Delete #{student.first_name}", student, method: :delete, data: { confirm: "Please confirm deletion of #{student.first_name}"} %></li>
+
+<table class="table table-striped table-hover">
+  <thead class="table-dark" >
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Grade Level</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.students.each do |student| %>
+      <tr>
+        <td><%= student.first_name %></td>
+        <td><%= student.last_name %></td>
+        <td><%= student.grade_level %></td>
+        <td><%= link_to "#{student.first_name}'s Show Page", student_path(student), class:"btn btn-dark" %></td>
+        <td><%= link_to 'Edit', edit_student_path(student), class:"btn btn-dark" %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: "Please confirm deletion of #{student.first_name}" }, class:"btn btn-danger" %></td>
+      </tr>
     <% end %>
-</ol>
+  </tbody>
+</table>
