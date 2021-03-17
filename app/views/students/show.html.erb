@@ -1,30 +1,19 @@
 
-<br>
-<br>
-<br>
 <h1><%= full_name(@student)%> - <%= @student.user.school %> Student </h1>
-
-<h3>Grade Level: <%= @student.grade_level %></h3>
-<h3>Favorite Movie: <%= @student.fav_movie %></h3>
-
-<% if @student.assignments == nil %>
-    <h3><%= full_name(@student) %> has completed all assignments!</h3>     
-<% else %>    
-    <h3> List of Teachers and Assignments for <%= full_name(@student)%></h3> 
-    <ol>
-        <% @student.teachers.uniq.each do |teacher| %>
-        <li><%= full_name(teacher) %> - <%= link_to "Show Page", teacher_path(teacher) %></li>
-              <ul>  <% teacher.assignments.each do |assignment| %>
-                   <li> <%= link_to assignment.title, assignment_path(assignment) %></li>
-                <% end %> </ul>
-        </li>
-        <% end %>        
-    </ol>
-<% end %>
-
-<%= link_to "List of #{full_name(@student)} Assignments", student_assignments_path(@student) %>
 <br>
-<%= link_to "Edit #{full_name(@student)}", edit_student_path(@student) %>
+
+<%= link_to "List of #{full_name(@student)} Assignments", student_assignments_path(@student), class:"btn btn-success btn-sm" %>
 <br>
-<%= link_to "Delete #{full_name(@student)}", @student, method: :delete, data: { confirm: "Please confirm deletion of #{full_name(@student)}"} %>
+<br>
+<br>
+<h6><strong>Grade Level:</strong> <%= @student.grade_level %></h6>
+<h6><strong>Favorite Movie:</strong> <%= @student.fav_movie %></h6>
+<br>
+<br>
+<br>
+
+<%= link_to "Edit #{full_name(@student)}", edit_student_path(@student), class:"btn btn-info btn-sm" %>
+<br>
+<br>
+<%= link_to "Delete #{full_name(@student)}", @student, method: :delete, data: { confirm: "Please confirm deletion of #{full_name(@student)}"}, class:"btn btn-dark btn-sm"  %>
 <br>

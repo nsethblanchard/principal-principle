@@ -1,39 +1,54 @@
 
+<h1><%= full_name(@teacher)%>'s Page - <%= @teacher.user.school %> Teacher </h1>
 <br>
-<br>
-<br>
-<h1><%= full_name(@teacher)%> - <%= @teacher.user.school %> Teacher </h1>
 
-<h3>Current Subject: <%= @teacher.subject %></h3>
-<h3>Favorite Pastime: <%= @teacher.hobby %></h3>
+<h6><strong>Current Subject:</strong> <%= @teacher.subject %></h6>
+<h6><strong>Favorite Pastime:</strong> <%= @teacher.hobby %></h6>
 
+<%= link_to "Add New Assignment", new_teacher_assignment_path(@teacher), class:"btn btn-success btn-sm" %>
+<br>
+<br>
 <% if @teacher.assignments == nil %>
     <h3><%= full_name(@teacher) %> currently has no student assignments</h3>     
 <% else %>    
     <h3> List of Students and Assignments for <%= full_name(@teacher)%></h3> 
-    <ol>
-        <% @teacher.students.uniq.each do |student| %>
-        <li><%= full_name(student) %> - <%= link_to "Show Page", student_path(student) %></li>
-              <ul>  <% student.assignments.each do |assignment| %>
-                   <li> <%= link_to assignment.title, assignment_path(assignment) %></li>
-                <% end %> </ul>
-        </li>
-        <% end %>        
-    </ol>
+    
+    <table class="table table-striped table-hover">
+  <thead class="table-dark" >
+    <tr>
+      <th>Student Name</th>
+      <th>Student Grade</th>
+      <th>Assignment Title</th>
+      <th>Assignment Content</th>
+      <th>Assignment Due Date</th>
+      <th>Completed?</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teacher.assignments.each do |assignment| %>
+      <tr>
+        <td><%= full_name(assignment.student) %></td>
+        <td><%= assignment.student.grade_level %></td>
+        <td><%= assignment.title %></td>
+        <td><%= assignment.content %></td>
+        <td><%= assignment.due_date.strftime("%m/%d/%y") %></td>
+        <td><%= assignment.completed %></td>
+        
+        <td><%= link_to "Assignment Page", assignment_path(assignment), class:"btn btn-success btn-sm" %></td>
+        <td><%= link_to "Student Page", student_path(assignment.student), class:"btn btn-success btn-sm" %></td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>
 
-
-
-
-
-<%= link_to "Add New Assignment", new_teacher_assignment_path(@teacher) %>
-
-
 <br>
 <br>
+
+<%= link_to "Edit #{full_name(@teacher)}", edit_teacher_path(@teacher), class:"btn btn-info btn-sm" %>
 <br>
 <br>
-<%= link_to "Edit #{full_name(@teacher)}", edit_teacher_path(@teacher) %>
-<br>
-<%= link_to "Delete #{full_name(@teacher)}", @teacher, method: :delete, data: { confirm: "Please confirm deletion of #{full_name(@teacher)}"} %>
+<%= link_to "Delete #{full_name(@teacher)}", @teacher, method: :delete, data: { confirm: "Please confirm deletion of #{full_name(@teacher)}"}, class:"btn btn-dark btn-sm" %>
 <br>
