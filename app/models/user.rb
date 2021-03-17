@@ -9,10 +9,10 @@ class User < ApplicationRecord
     has_many :students
 
     def self.from_omniauth(auth)
-      where(uid: auth.info.uid).first_or_initialize do |user|
+      where(uid: auth.info.uid).first do |user|
         user.username = auth.info.name
         user.email = auth.info.email
-        user.school = auth.info.school
+        # user.school = auth.info.school
         user.password = SecureRandom.hex
       end
     end
