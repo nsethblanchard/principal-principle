@@ -1,19 +1,22 @@
-
-
 <h1> Assignment Show Page </h1>
 
-<h4> Assignment Title: <%= @assignment.title %> </h4>
-<h4> Assignment content: <%= @assignment.content %> </h4>
-
-<h4> Assigning Teacher: <%= link_to full_name(@assignment.teacher), teacher_path(@assignment.teacher.id) %> </h4>
-<h4> Assigned Student: <%= link_to full_name(@assignment.student), student_path(@assignment.student.id) %> </h4>
-<h4> Due Date: <%= @assignment.due_date.strftime("%m/%d/%y") %> </h4>
-
-
-
-<%= link_to "#{@assignment.teacher.user.school} Profile Page", user_path(@assignment.teacher.user_id) %>
+<h6><strong>Assignment Title:</strong> <%= @assignment.title %> </h6>
+<h6><strong>Assignment content:</strong> <%= @assignment.content %> </h6>
+<h6><strong>Due Date:</strong> <%= @assignment.due_date.strftime("%m/%d/%y") %></h6>
+<h6><strong>Assigment Completed?:</strong> <%= @assignment.completed %></h6>
+<h6><strong>Assigment Grade:</strong> <%= @assignment.letter_grade %></h6>
 <br>
-<%= link_to "Edit This Assignment", edit_assignment_path(@assignment) %>
 <br>
-<%= link_to "Delete Assignment", @assignment, method: :delete, data: { confirm: "Please confirm deletion of this assignment"} %>
+
+<h6><strong>Assigning Teacher:</strong> <%= link_to full_name(@assignment.teacher), teacher_path(@assignment.teacher.id), class:"btn btn-success btn-sm" %> </h6>
+<h6><strong>Assigned Student:</strong> <%= link_to full_name(@assignment.student), student_path(@assignment.student.id), class:"btn btn-success btn-sm" %> </h6>
+
+
+
+<br>
+<br>
+<%= link_to "Edit This Assignment", edit_assignment_path(@assignment), class:"btn btn-info btn-sm" %>
+<br>
+<br>
+<%= link_to "Delete Assignment", @assignment, method: :delete, data: { confirm: "Please confirm deletion of this assignment"}, class:"btn btn-dark btn-sm" %>
 <br>

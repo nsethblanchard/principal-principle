@@ -1,18 +1,37 @@
-
-<br>
-<br>
-<br>
-
-<h1> Assignment Index Page </h1>
+<h1> Assignments Index </h1>
 
 <% if @assignments == [] %>
-    <h2>No current assignments. </h2>
+    <h6>No current assignments. </h6>
 <% else %>
-    <% @assignments.each do |assign| %>
-        <h4>Assignment Title: <%= assign.title if assign.title %></h4>
-        <h4>Content of Assignment: <%= assign.content if assign.content %></h4>
-        <h4>Assigning Teacher: <%= full_name(assign.teacher) if assign.teacher %></h4>
-        <h4>Student Assigned: <%= full_name(assign.student) if assign.student %></h4>
-    <br>
+
+<table class="table table-striped table-hover">
+  <thead class="table-dark" >
+    <tr>
+      
+      <th>Assignment Title</th>
+      <th>Assignment Content</th>
+      <th>Student Name</th>
+      <th>Assignment Due Date</th>
+      <th>Completed?</th>
+      <th>Assignment Grade</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= assignment.title %></td>
+        <td><%= assignment.content %></td>
+        <td><%= full_name(assignment.student) %></td>
+        <td><%= assignment.due_date.strftime("%m/%d/%y") %></td>
+        <td><%= assignment.completed %></td>
+        <td><%= assignment.letter_grade %></td>
+        <td><%= link_to "Assignment Page", assignment_path(assignment), class:"btn btn-success btn-sm" %></td>
+        <td><%= link_to "Student Page", student_path(assignment.student), class:"btn btn-success btn-sm" %></td>  
+        <td><%= link_to "Teacher Page", teacher_path(assignment.teacher), class:"btn btn-success btn-sm" %></td> 
+      </tr>
     <% end %>
+  </tbody>
+</table>
 <% end %>
