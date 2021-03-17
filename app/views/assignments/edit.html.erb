@@ -10,6 +10,12 @@
     <%= f.label :due_date %>
     <%= f.date_field :due_date %>
     <br>
+    <%= f.label :completed %>
+    <%= f.check_box :completed %>
+    <br>
+    <%= f.label :letter_grade %>
+    <%= f.text_field :letter_grade %>
+    <br>
     <%= f.label :teacher_id, "Assigning Teacher" %>
     <%= f.collection_select :teacher_id, Teacher.where(user_id: current_user.id), :id, :last_name, prompt: true %>
     <br>

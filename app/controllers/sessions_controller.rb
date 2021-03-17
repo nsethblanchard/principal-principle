@@ -27,12 +27,25 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        binding.pry
         @user = User.from_omniauth(auth)
-        @user.save
-        session[:user_id] = @user.id
-        redirect_to user_path(@user)
-    end
+        if @user.save
+            session[:user_id] = @user.id
+            redirect_to user_path(@user.id)
+        else 
+            redirect_to signup_path
+        end
+      end
+
+    # def omniauth
+    #     @user = User.from_omniauth(auth)
+        
+    #     if @user
+    #         session[:user_id] = @user.id
+    #         redirect_to user_path(@user.id)
+    #     else
+    #         redirect_to '/'
+    #     end
+    # end
       
       private
       

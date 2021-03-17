@@ -14,9 +14,9 @@ class Assignment < ApplicationRecord
     # end
 
   def self.overdue_assignments
-    Assignment.where('due_date < ?', DateTime.now).order(:desc)
+    Assignment.where['due_date < ? and completed = false', DateTime.now].order(:desc)    #and not completed!!!
   end
 
-
+  # def honor_roll ?????
   
 end
