@@ -2,6 +2,9 @@
 
 <h1>New Teacher</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @teacher} %>
+<%# this will render the errors partial and then send our original variable to the "object" variable in the form%>
+
 <%= flash[:message] if flash[:message] %>
 <br>
 

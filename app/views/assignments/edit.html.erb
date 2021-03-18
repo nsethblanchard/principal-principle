@@ -1,5 +1,8 @@
 <h1>Update This Assignment</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @assignment} %>
+<%# this will render the errors partial and then send our original variable to the "object" variable in the form%>
+
 <%= form_for @assignment do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>

@@ -1,5 +1,8 @@
 <h1>Add a New Assignment</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @assignment} %>
+<%# this will render the errors partial and then send our original variable to the "object" variable in the form%>
+
 <%= flash[:message] if flash[:message] %>
 <br>
 <%= form_for([@assignment.teacher, @assignment]) do |f| %>
@@ -24,8 +27,8 @@
         <%= f.hidden_field :teacher_id %>
     <% end %>
     
-    <%= f.label :student_id, "Student who will be assigned" %>
-    <%= f.collection_select :student_id, Student.where(user_id: current_user.id), :id, :last_name, prompt: true %>
+    <%= f.label :assignment_id, "assignment who will be assigned" %>
+    <%= f.collection_select :assignment_id, assignment.where(user_id: current_user.id), :id, :last_name, prompt: true %>
     <br>
     <br>
     <%# f.collection_select :teacher_id, Teacher.all, :id, :first_name %>   

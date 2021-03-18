@@ -2,6 +2,9 @@
 
 <h1>Edit <%= full_name(@teacher) %>'s Information</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @teacher} %>
+<%# this will render the errors partial and then send our original variable to the "object" variable in the form%>
+
 <%= form_for @teacher do |f| %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>

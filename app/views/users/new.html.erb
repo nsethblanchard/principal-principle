@@ -2,6 +2,10 @@
 <h3> School Management Tool </h3>
 <br>
 <br>
+
+<%= render partial: "layouts/errors", locals: {object: @user} %>
+<%# this will render the errors partial and then send our original variable to the "object" variable in the form%>
+
 <%= flash[:message] if flash[:message] %>
 <br>
 <br>

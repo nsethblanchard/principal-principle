@@ -15,7 +15,7 @@ class TeachersController < ApplicationController
             flash[:message]= "You have a new teacher!"
             redirect_to user_path(@teacher.user.id)
         else
-            flash[:message] = "Please enter first and last name as well as subject and a hobby."
+            # flash[:message] = "Please enter first and last name as well as subject and a hobby."
             render :new
         end 
     end

@@ -1,0 +1,17 @@
+
+<%#  this partial code could be done as a helper, but would be difficult to write
+because helper files are only coded in ruby and this has a lot of html tags %>
+
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(object.errors.count, "error") %> prohibited this from being saved:</h2>
+
+    <ul>
+      <% object.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%#  using 'object' allows us to use this code repeatedly for all of the views we want %>

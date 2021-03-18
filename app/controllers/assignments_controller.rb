@@ -24,7 +24,7 @@ class AssignmentsController < ApplicationController
             @assignment.save
             redirect_to assignment_path(@assignment)
         else
-            flash[:message] = "Title, Content, and due date are requirements.  Please don't leave them blank."
+            # flash[:message] = "Title, Content, and due date are requirements.  Please don't leave them blank."
             render :new
         end
     end
