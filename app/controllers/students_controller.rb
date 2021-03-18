@@ -21,8 +21,6 @@ class StudentsController < ApplicationController
     def show
         @student = Student.find_by(id: params[:id])
         redirect_to '/' if !@student.user 
-
-
         # if you only use @student = Student.find(params[:id]), you would need a rescue statement
         # because if it returns nil, there will be an error and the program will break
     end
