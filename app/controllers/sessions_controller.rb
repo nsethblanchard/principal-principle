@@ -35,20 +35,9 @@ class SessionsController < ApplicationController
             flash[:message] = "Unable to find this login information, please sign up with your email"
             redirect_to signup_path
         end
-      end
-
-    # def omniauth
-    #     @user = User.from_omniauth(auth)
-        
-    #     if @user
-    #         session[:user_id] = @user.id
-    #         redirect_to user_path(@user.id)
-    #     else
-    #         redirect_to '/'
-    #     end
-    # end
+    end
       
-      private
+    private
       
     def auth
        request.env['omniauth.auth']

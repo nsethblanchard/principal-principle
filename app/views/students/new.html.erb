@@ -1,6 +1,9 @@
 
 <h1>New Student</h1>
 
+<%= flash[:message] if flash[:message] %>
+<br>
+
 <%= form_for @student do |f| %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>

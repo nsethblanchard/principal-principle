@@ -10,19 +10,12 @@ class User < ApplicationRecord
 
     def self.from_omniauth(auth)
       where(uid: auth.info.uid).first do |user|
+        #removed "_or_initialize" so a new user wouldn't be instantiated
         user.username = auth.info.name
         user.email = auth.info.email
-        # user.school = auth.info.school
         user.password = SecureRandom.hex
       end
     end
 
-    # def self.from_omniauth(auth)
-    #     first_or_create(uid: auth.uid) do |user|
-    #     user.username = auth.info.name
-    #     user.email = auth.info.email
-    #     user.school = auth.info.school
-    #     user.password = SecureRandom.hex
-    #   end
-    # end
+
 end

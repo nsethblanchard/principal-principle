@@ -13,6 +13,7 @@ class StudentsController < ApplicationController
             flash[:message]= "You have a new student!"
             redirect_to user_path(@student.user.id)
         else
+            flash[:message] = "Please enter first and last name as well as favorite movie. Grade level is also required and needs to be a number."
             render :new
         end 
     end
