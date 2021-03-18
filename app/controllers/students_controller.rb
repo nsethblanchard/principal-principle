@@ -1,4 +1,7 @@
 class StudentsController < ApplicationController
+    before_action :set_student, only: [:show, :edit, :update]
+    #you can use a before_action for helper methods like "redirect_if_not_logged_in" up here so you don't have to call within each action
+
     def index
         @students = current_user.students.all
     end
@@ -19,18 +22,12 @@ class StudentsController < ApplicationController
     end
 
     def show
-        @student = Student.find_by(id: params[:id])
-        redirect_to '/' if !@student.user 
-        # if you only use @student = Student.find(params[:id]), you would need a rescue statement
-        # because if it returns nil, there will be an error and the program will break
     end
 
     def edit
-        @student = Student.find(params[:id])
     end
 
     def update
-        @student = Student.find(params[:id])
         @student.update(student_params)
         flash[:message] = "You have updated #{full_name(@student)}"
         redirect_to user_path(@student.user.id)
@@ -45,5 +42,9 @@ class StudentsController < ApplicationController
 
     def student_params
         params.require(:student).permit(:first_name, :last_name, :grade_level, :fav_movie, :user_id)
+    end
+
+    def set_student
+        @student = Student.find(params[:id])
     end
 end

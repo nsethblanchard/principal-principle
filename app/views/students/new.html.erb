@@ -1,30 +1,7 @@
 
 <h1>Add a New Student</h1>
 
-
 <%= render partial: "layouts/errors", locals: {object: @student} %>
 <%# this will render the errors partial and then send our original variable to the "object" variable in the form%>
 
-<%= flash[:message] if flash[:message] %>
-<br>
-
-<%= form_for @student do |f| %>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-    <br>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-    <br>
-    <%= f.label :grade_level %>
-    <%= f.text_field :grade_level %>
-    <br>
-    <%= f.label :fav_movie, "Favorite Movie" %>
-    <%= f.text_field :fav_movie %>
-    <br>
-    <%# you can add the hidden field for setting up user_id but that leaves %>
-    <%# a vulnerability to someone changing the hidden field, better in the controller sometimes %>
-
-
-<%= f.submit "Create a new Student" %>
-
-<% end %>
+<%= render "form" %>

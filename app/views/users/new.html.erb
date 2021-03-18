@@ -6,9 +6,6 @@
 <%= render partial: "layouts/errors", locals: {object: @user} %>
 <%# this will render the errors partial and then send our original variable to the "object" variable in the form%>
 
-<%= flash[:message] if flash[:message] %>
-<br>
-<br>
 <%= form_for @user do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %>

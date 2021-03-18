@@ -5,24 +5,4 @@
 <%= render partial: "layouts/errors", locals: {object: @teacher} %>
 <%# this will render the errors partial and then send our original variable to the "object" variable in the form%>
 
-<%= flash[:message] if flash[:message] %>
-<br>
-
-<%= form_for @teacher do |f| %>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-    <br>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-    <br>
-    <%= f.label :subject %>
-    <%= f.text_field :subject %>
-    <br>
-    <%= f.label :hobby %>
-    <%= f.text_area :hobby %>
-    <br>
-    <%# you can add the hidden field for setting up user_id but that leaves %>
-    <%# a vulnerability to someone changing the hidden field, better in the controller sometimes %>
-    <%= f.submit "Create a new Teacher" %>
-
-<% end %>
+<%= render 'form' %>

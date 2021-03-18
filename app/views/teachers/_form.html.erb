@@ -1,15 +1,15 @@
-<%= form_for @student do |f| %>
+<%= form_for @teacher do |f| %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
     <br>
     <%= f.label :last_name %>
     <%= f.text_field :last_name %>
     <br>
-    <%= f.label :grade_level %>
-    <%= f.text_field :grade_level %>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
     <br>
-    <%= f.label :fav_movie, "Favorite Movie" %>
-    <%= f.text_field :fav_movie %>
+    <%= f.label :hobby %>
+    <%= f.text_area :hobby %>
     <br>
     <%# you can add the hidden field for setting up user_id but that leaves %>
     <%# a vulnerability to someone changing the hidden field, better in the controller sometimes %>

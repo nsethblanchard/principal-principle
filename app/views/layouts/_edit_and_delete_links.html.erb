@@ -1,0 +1,7 @@
+
+
+<%= link_to "Edit #{full_name(person)}", edit_THIS IS THE PLACE_path(person), class:"btn btn-info btn-sm" %>
+<br>
+<br>
+<%= link_to "Delete #{full_name(person)}", person, method: :delete, data: { confirm: "Please confirm deletion of #{full_name(person)}"}, class:"btn btn-dark btn-sm" %>
+<br>

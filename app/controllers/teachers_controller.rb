@@ -1,4 +1,5 @@
 class TeachersController < ApplicationController
+    before_action :set_teacher, only: [:show, :edit, :update]
     #you can use a before_action for helper methods like "redirect_if_not_logged_in" up here so you don't have to call within each action
 
     def index
@@ -21,16 +22,12 @@ class TeachersController < ApplicationController
     end
 
     def show
-        @teacher = Teacher.find(params[:id])
-        redirect_to '/' if !@teacher.user
     end
 
-    def edit
-        @teacher = Teacher.find(params[:id])
+    def edit    
     end
 
     def update
-        @teacher = Teacher.find(params[:id])
         @teacher.update(teacher_params)
         flash[:message] = "You have updated #{full_name(@teacher)}"
         redirect_to user_path(@teacher.user.id)
@@ -45,5 +42,9 @@ class TeachersController < ApplicationController
 
     def teacher_params
         params.require(:teacher).permit(:first_name, :last_name, :subject, :hobby, :user_id)
+    end
+
+    def set_teacher
+        @teacher = Teacher.find(params[:id])
     end
 end

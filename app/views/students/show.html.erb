@@ -12,8 +12,9 @@
 <br>
 <br>
 
+
 <%= link_to "Edit #{full_name(@student)}", edit_student_path(@student), class:"btn btn-info btn-sm" %>
 <br>
 <br>
-<%= link_to "Delete #{full_name(@student)}", @student, method: :delete, data: { confirm: "Please confirm deletion of #{full_name(@student)}"}, class:"btn btn-dark btn-sm"  %>
+<%= link_to "Delete #{full_name(@student)}", @student, method: :delete, data: { confirm: "Please confirm deletion of #{full_name(@student)}"}, class:"btn btn-dark btn-sm" %>
 <br>

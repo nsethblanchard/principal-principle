@@ -1,4 +1,7 @@
 class AssignmentsController < ApplicationController
+    before_action :set_assignment, only: [:show, :edit, :update]
+    #you can use a before_action for helper methods like "redirect_if_not_logged_in" up here so you don't have to call within each action
+
     def index
         #in order to check for nesting, check for foreign key
         if params[:student_id] && @student = Student.find_by_id(params[:student_id]) #add the find_by to return nil if they look for non-existent student
@@ -30,15 +33,12 @@ class AssignmentsController < ApplicationController
     end
 
     def show
-        @assignment = Assignment.find(params[:id])
     end
 
     def edit
-        @assignment = Assignment.find(params[:id])
     end
 
     def update
-        @assignment = Assignment.find(params[:id])
         @assignment.update(assignment_params)
         flash[:message] = "You have updated this Assignment"
         redirect_to assignment_path(@assignment)
@@ -61,5 +61,9 @@ class AssignmentsController < ApplicationController
 
     def assignment_params
         params.require(:assignment).permit(:title, :content, :completed, :letter_grade, :due_date, :teacher_id, :student_id)
+    end
+
+    def set_assignment
+        @assignment = Assignment.find(params[:id])
     end
 end

@@ -1,0 +1,32 @@
+<%= form_for([@assignment.teacher, @assignment]) do |f| %>
+    <%# adding the @teacher allows for nesting and will directly assign this assignment to @teacher %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <br>
+    <%= f.label :due_date %>
+    <%= f.date_field :due_date %>
+    <br>
+    <br>
+    <% if !@assignment.teacher %>
+        <%# removes drop down if there is a teacher for this assignment aka with nesting%>
+        <%= f.label :teacher_id, "Assigning Teacher" %>
+        <%= f.collection_select :teacher_id, Teacher.where(user_id: current_user.id), :id, :last_name, prompt: true %>
+        <br>
+        <br>
+    <% else %>
+        <%= f.hidden_field :teacher_id %>
+    <% end %>
+    
+    <%= f.label :student_id, "Student who will be assigned" %>
+    <%= f.collection_select :student_id, Student.where(user_id: current_user.id), :id, :last_name, prompt: true %>
+    <br>
+    <br>
+    <%# f.collection_select :teacher_id, Teacher.all, :id, :first_name %>   
+    <%# you can add the hidden field for setting up user_id but that leaves %>
+    <%# a vulnerability to someone changing the hidden field, better in the controller sometimes %>
+    <%= f.submit "Create a new Assignment" %>
+
+<% end %>
