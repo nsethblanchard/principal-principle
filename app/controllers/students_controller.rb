@@ -45,6 +45,9 @@ class StudentsController < ApplicationController
     end
 
     def set_student
-        @student = Student.find(params[:id])
+        if @student = Student.find_by(id: params[:id])
+        else
+            redirect_to user_path(current_user)
+        end
     end
 end

@@ -64,6 +64,9 @@ class AssignmentsController < ApplicationController
     end
 
     def set_assignment
-        @assignment = Assignment.find(params[:id])
+        if @assignment = Assignment.find_by(id: params[:id])
+        else
+            redirect_to user_path(current_user)
+        end
     end
 end
