@@ -7,14 +7,4 @@ module ApplicationHelper
         fn = person.first_name + " " + person.last_name
         fn.titleize
     end
-
-    def button_text  #changes the text of the buttons based on the actions- for our partials
-        if controller.action_name == "new"
-           return "Add"
-        elsif controller.action_name == "edit"
-           return "Update"
-        else
-           return "Submit"
-        end
-      end
 end
