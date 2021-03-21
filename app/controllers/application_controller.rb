@@ -20,5 +20,5 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
-    #potentially add a redirect_if_not_logged_in type of method, then add to user actions
+    #potentially add a redirect_if_not_logged_in type of method, then add to user model
 end
