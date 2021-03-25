@@ -1,9 +1,10 @@
 class StudentsController < ApplicationController
     before_action :set_student, only: [:show, :edit, :update]
+    before_action :redirect_if_not_logged_in
     #you can use a before_action for helper methods like "redirect_if_not_logged_in" up here so you don't have to call within each action
 
     def index
-        @students = current_user.students.all
+        @students = Student.search(params[:search])
     end
 
     def new
@@ -16,7 +17,6 @@ class StudentsController < ApplicationController
             flash[:message]= "You have a new student!"
             redirect_to user_path(@student.user.id)
         else
-            # flash[:message] = "Please enter first and last name as well as favorite movie. Grade level is also required and needs to be a number."
             render :new
         end 
     end
@@ -41,13 +41,11 @@ class StudentsController < ApplicationController
     private 
 
     def student_params
-        params.require(:student).permit(:first_name, :last_name, :grade_level, :fav_movie, :user_id)
+        params.require(:student).permit(:first_name, :last_name, :grade_level, :fav_movie, :user_id )
     end
 
     def set_student
-        if @student = Student.find_by(id: params[:id])
-        else
-            redirect_to user_path(current_user)
-        end
+        @student = Student.find_by(id: params[:id]) 
+        redirect_to user_path(current_user) if !@student
     end
 end

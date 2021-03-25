@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   
   get '/signup' => "users#new"
   
-
   #login routes
   get '/login' => "sessions#new"
   post '/login' => "sessions#create"
@@ -21,8 +20,8 @@ Rails.application.routes.draw do
   resources :users
   
   resources :teachers do
-    resources :assignments, shallow: true
-    # "shallow true" replaces only: [:new, :create, :index] as they are the most common trio
+    resources :assignments, only: [:new, :create, :index]
+    
   end
   
   resources :students do

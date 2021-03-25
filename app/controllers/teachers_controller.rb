@@ -1,9 +1,15 @@
 class TeachersController < ApplicationController
     before_action :set_teacher, only: [:show, :edit, :update]
-    #you can use a before_action for helper methods like "redirect_if_not_logged_in" up here so you don't have to call within each action
+    before_action :redirect_if_not_logged_in
+    
 
     def index
-        @teachers = current_user.teachers.all
+        @teachers = current_user.teachers
+        if params[:search] && !params[:search].empty?
+            @teachers = Teacher.search(params[:search])
+        else
+            @teachers = current_user.teachers   
+        end
     end
     
     def new
@@ -40,13 +46,11 @@ class TeachersController < ApplicationController
     private
 
     def teacher_params
-        params.require(:teacher).permit(:first_name, :last_name, :subject, :hobby, :user_id)
+        params.require(:teacher).permit(:first_name, :last_name, :subject, :hobby, :user_id, :search)
     end
 
     def set_teacher
-        if @teacher = Teacher.find_by(id: params[:id])
-        else
-            redirect_to user_path(current_user)
-        end
+        @teacher = Teacher.find_by(id: params[:id]) 
+        redirect_to user_path(current_user) if !@teacher
     end
 end

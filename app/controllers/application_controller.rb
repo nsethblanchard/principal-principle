@@ -20,5 +20,11 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
+    def redirect_if_not_logged_in
+        if !logged_in?
+            redirect_to '/'
+        end
+    end
+
     #potentially add a redirect_if_not_logged_in type of method, then add to user model
 end

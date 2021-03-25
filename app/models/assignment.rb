@@ -7,15 +7,19 @@ class Assignment < ApplicationRecord
   
   scope :alpha, -> { order (:content) }  
 
-  scope :overdue_assignments, -> (date = DateTime.now) { where("due_date < ?", date) && where("completed == false") }
-  #this is the scope method = usually called in the controller
+  scope :overdue_assignments, -> (date) { where("due_date < ?", date) && where("completed == false") }
 
-  # def self.overdue_assignments
-  #   Assignment.where('due_date < ? and completed == false', DateTime.now).order(:desc)    
+  # def self.search(search)
+  #   if search
+  #     stu = Student.find_by(first_name: search)
+      
+  #     if stu
+  #       Student.where("first_name LIKE ?", search) 
+  #     else
+  #       @assignments = Assignment.all
+  #     end
+  #   else
+  #     @assignments = Assignment.all
+  #   end
   # end
-  
-  # def honor_roll ?????
-
-  
-  
 end
