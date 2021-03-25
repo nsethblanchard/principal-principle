@@ -16,6 +16,5 @@ A user can now use the Principal Principle application. Enjoy!
 Contributors
 nsethblanchard
 
-Licensing Link for appropriate Use of Task Hammer application
-Licensing
+
 
