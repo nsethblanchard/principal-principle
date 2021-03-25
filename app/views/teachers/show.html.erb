@@ -8,7 +8,7 @@
 <%= link_to "Add New Assignment", new_teacher_assignment_path(@teacher), class:"btn btn-success btn-sm" %>
 <br>
 <br>
-<% if @teacher.assignments == nil %>
+<% if @teacher.assignments == [] %>
     <h3><%= full_name(@teacher) %> currently has no student assignments</h3>     
 <% else %>    
     <h3> List of Students and Assignments for <%= full_name(@teacher)%></h3> 
